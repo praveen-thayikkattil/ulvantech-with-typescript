@@ -1,13 +1,24 @@
 import Link from 'next/link'
+import { useEffect, useState } from 'react';
 import Layout from '../components/Layout'
+import Form, { FormData } from '../components/Form';
+import { useGetFormData } from '../hooks/use-get-form-data';
 
-const IndexPage = () => (
-  <Layout title="Home | Next.js + TypeScript Example">
-    <h1>Hello Next.js 👋</h1>
-    <p>
-      <Link href="/about">About</Link>
-    </p>
-  </Layout>
-)
+function IndexPage() {
+  const [formData, setFormData] = useState<FormData[]>();
+
+  useEffect(() => {
+    useGetFormData()
+      .then(items => {
+        setFormData(items)
+      })
+  }, [])
+  
+  return (
+    <Layout title="UlvanTech | ReactJS Test">
+      <Form title='Ulvantech React Test - Form' formData={formData} />
+    </Layout>
+  );
+}
 
 export default IndexPage
