@@ -1,5 +1,4 @@
 import React from 'react';
-import './form.module.scss';
 
 export type DataType = {
     fieldName: string;
@@ -13,12 +12,12 @@ export interface FormData {
     success: boolean;
 }
 
-export interface UTFormProps {
+export interface FormProps {
     title: string;
     formData: FormData[];
 }
 
-const UTForm = ({ title, formData }: UTFormProps) => {
+const Form = ({ title, formData }: FormProps) => {
     console.log(formData);
 
     const renderField = (fieldData: { type: string; fieldName: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal; value: string | number | readonly string[]; }) => {
@@ -56,7 +55,7 @@ const UTForm = ({ title, formData }: UTFormProps) => {
 
     const renderForm = (data: any[]) => {
         return data.map((field, index) => {
-            return <p key={index}>{renderField(field)}</p>
+            return <li key={index}>{renderField(field)}</li>
         })
     }
 
@@ -68,9 +67,9 @@ const UTForm = ({ title, formData }: UTFormProps) => {
                 <h1>{title}</h1>
             </header>
 
-            <div className='form-wrapper'>{renderForm(formData?.data)}</div>
+            <ul className='form-wrapper'>{renderForm(formData?.data)}</ul>
         </article>
     );
 }
 
-export default UTForm;
+export default Form;
