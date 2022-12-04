@@ -50,3 +50,20 @@ html, body {
         }
     }
 }
+
+button {
+    background: rgba(blue, 0.2);
+    border: 0;
+    padding: 10px 15px;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+    &:hover,
+    &:focus,
+    &:active {
+        background: rgba(green, 0.4);
+        color: white;
+        text-shadow: 1px 1px 3px rgba(black, 0.3);
+    }
+}
